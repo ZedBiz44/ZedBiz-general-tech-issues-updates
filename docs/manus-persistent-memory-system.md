@@ -156,6 +156,31 @@ When evidence changes, create a replacement record that points to the source and
 
 The lean option should be built first. It gives an immediate improvement, establishes clean source records, and produces the training data and taxonomy needed for the gateway. Building a clever retrieval system on top of messy knowledge merely gives you a faster way to retrieve chaos.
 
+## Direct Hindsight Connection Feasibility
+
+**Yes.** Hindsight exposes a built-in MCP endpoint per memory bank. Manus can use it as a custom MCP connection, so `recall`, `retain`, and other Hindsight tools become available during a Manus task. This adds a memory tool, not automatic hidden memory: Manus must be instructed to recall before relevant work and retain only approved summaries after it.
+
+| Option | Connection pattern | Strength | Constraint |
+|---|---|---|---|
+| Direct bank-scoped MCP, recommended | `https://<protected-hindsight-host>/mcp/manus-zedbiz/` with a Bearer authorization header | Least privilege, one dedicated bank, native `recall` and `retain` tools | Requires a stable public HTTPS endpoint and a new least-privilege API key |
+| REST API connector | Hindsight REST API against the same dedicated bank | Tighter control over exactly which API operations are exposed | Requires a purpose-built API connector note and explicit request handling |
+| Context gateway | A small service retrieves from Hindsight and starts or primes Manus work with a bounded source-linked context pack | Makes recall consistent even when Manus does not choose the tool itself | More infrastructure and maintenance; build only after the direct pilot proves useful |
+
+The existing central Hindsight deployment is recorded as API version `0.9.1` and already supports protected public API access for other agents. However, Manus does **not** currently have a dedicated bank, a configured custom connection, a supplied Hindsight credential, or a verified public MCP URL. The direct connector therefore remains **feasible but not configured**.
+
+> The safe first connection is a new `manus-zedbiz` bank, not the existing `zedbiz-shared` bank. It should begin with manual recall and deliberate retain only, scoped by tags such as `domain:technical`, `domain:marketingjack`, `project:<id>`, and `client:<id>`. Do not grant Manus multi-bank management, deletion, or unfiltered shared-bank access in the pilot.
+
+### Direct-Connection Acceptance Test
+
+| Test | Required evidence |
+|---|---|
+| Secure access | Public HTTPS endpoint reaches the Hindsight MCP server and unauthenticated requests fail with `401` |
+| Bank isolation | Manus connects only to `manus-zedbiz`; `list_banks`, delete, clear, and update-bank tools are not available |
+| Controlled retain | A harmless, unique fact is stored with source URL, timestamp, and scope tags |
+| Fresh-task recall | A new Manus task recalls that fact from the dedicated bank, shows the source link, and stays within the requested tag scope |
+| No leakage | A test query cannot retrieve existing `zedbiz-shared`, client, or other agent-bank facts |
+| Rollback | Disabling the custom connection returns Manus to project boot files and canonical GitHub/Notion records with no loss of source data |
+
 ## Lean Implementation Plan
 
 ### Phase A: Establish the Memory Spine
