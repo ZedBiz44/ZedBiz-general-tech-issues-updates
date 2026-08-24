@@ -282,6 +282,20 @@ If retrieval quality, isolation, or source validation fails, disable the retriev
 
 Approve **Phase A and Phase B** first. They are the smallest working version: a project-based boot context, compact source-of-truth files, and a consistent capture-and-promotion ritual. Then test it on Manus alone for one week of real tasks. Add Hindsight-backed retrieval only after the resulting records are clean enough to make retrieval genuinely useful.
 
+## Sober Decision Gate: Do Not Build by Default
+
+The earlier architecture describes what is possible. It is **not** a recommendation to build every layer. Manus already has a native lightweight persistence mechanism through Projects: shared instructions and knowledge-base files automatically apply to new tasks in the project. The user's existing Notion, GitHub, Google Workspace, Slack, Airtable, Asana, Gmail, and HighLevel connections already cover most retrieval and source-record needs.
+
+| Option | What changes now | Management burden | When it is justified |
+|---|---|---:|---|
+| No new system, recommended now | Use a single Manus Project and the existing GitHub/Notion records deliberately | Very low | Default until real work proves a gap |
+| Lightweight project pack | Add only a concise project instruction plus three files: current state, active priorities, and a source index | Low | Repeat work needs the same context across new tasks |
+| External Hindsight MCP memory | Operate a dedicated bank, scoped credential, recall/retain rules, tests, and audit trail | Medium to high | Only after measured repeated recall failures despite the project pack |
+
+The **default decision is no external memory build**. Start one focused Manus project and evaluate it over ten material tasks. Record a failure only when Manus either requires a repeat explanation of a fact that was in the project pack, misses a relevant canonical record that the source index identifies, or repeats a documented failed approach. Escalate to a Hindsight pilot only if at least three such failures occur and the Project files were confirmed current and scoped correctly.
+
+This threshold prevents a shiny-memory-object project from becoming a second knowledge system that must itself be remembered and maintained. A project pack that works 80 percent of the time is usually better operationally than a clever memory service that works 95 percent of the time but creates another owner, credential, index, audit log, and failure surface.
+
 ## Related Records
 
 - [OpenClaw Memory and Hindsight Management SOP](https://app.notion.com/p/0aea3e33d58182d4b93681fe1bcd7a41)
