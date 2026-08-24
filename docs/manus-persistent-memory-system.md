@@ -156,6 +156,42 @@ When evidence changes, create a replacement record that points to the source and
 
 The lean option should be built first. It gives an immediate improvement, establishes clean source records, and produces the training data and taxonomy needed for the gateway. Building a clever retrieval system on top of messy knowledge merely gives you a faster way to retrieve chaos.
 
+## Memory Wiki First Architecture
+
+The existing OpenClaw Memory Wiki is the right conceptual model for Manus, but its plugin cannot be installed inside Manus itself. Instead, Manus should use a **GitHub-backed, Markdown Memory Wiki** as its reviewed knowledge layer, with Notion remaining the operational layer. Manus can then read the index and the relevant pages at the start of work, write proposed knowledge as a reviewable change, and preserve full change history through Git.
+
+| Wiki bucket | Purpose | Canonical home | Manus access rule |
+|---|---|---|---|
+| `sources/` | Evidence, original documents, research snapshots, source links | GitHub Markdown | Read when validating a claim; never overwrite external evidence |
+| `entities/` | Durable things: agents, clients, tools, systems, projects, vendors | GitHub Markdown | Read by named scope; write only when new facts have sources |
+| `concepts/` | Reusable methods, operating patterns, brand rules, decision frameworks | GitHub Markdown | Prefer reviewed concepts over recalled chat memory |
+| `syntheses/` | Source-linked conclusions, decision summaries, and reusable recommendations | GitHub Markdown and linked Notion decision page | Create or update only after a task produces a validated conclusion |
+| `current/` | Compact current-state and active-priorities indexes | GitHub Markdown | Load at every relevant task start; keep short and dated |
+| `reports/` | Audits, retrieval tests, and generated operational checks | GitHub Markdown | Append with date, scope, method, and result |
+
+The Memory Wiki should sit **in front of Hindsight**. Hindsight can surface likely relevant past facts and handoff clues, but the wiki supplies reviewed and source-linked knowledge. This mirrors the existing ZedBiz Memory Wiki routing rule: raw conversational memory is not durable knowledge until it is promoted into a small, source-backed artifact.
+
+> Start with a small `manus-memory-wiki/` directory in the general technical repository, not a giant second knowledge base. It should index and link the existing OpenClaw shared wiki, GitHub records, and Notion decision pages rather than copy them. One authority, many pointers.
+
+### Manus Task Flow with a Wiki
+
+| Stage | Manus behavior |
+|---|---|
+| Scope | Identify the business area, project, client boundary, and required authority level |
+| Load | Read `current/README.md`, the relevant entity or concept page, and one matching synthesis or SOP |
+| Retrieve | When enabled later, call Hindsight only for scoped leads, then validate them against wiki and canonical sources |
+| Work | Perform the task using the retrieved source set; flag conflicts and stale records |
+| Capture | Write a short episodic journal/issue record only when the outcome contains a reusable lesson, decision, fact, failure, or verified fix |
+| Promote | Create a pull-requestable wiki update for durable knowledge, linking sources and Notion operational records where appropriate |
+
+### Recommended Manus Wiki Pilot
+
+| Week | Outcome |
+|---|---|
+| First | Create the skeleton, the root index, a technical current-state index, and five high-value entity/concept pages. Use it manually in Manus tasks. |
+| Second | Add the end-of-task capture template and promote only confirmed, reusable learnings. Measure whether the index reduces repeated explanation. |
+| Third | Enable the dedicated Hindsight bank as a **recall-only** assistant to find candidates and compare its results against the wiki. Retain only source-linked summaries. |
+
 ## Direct Hindsight Connection Feasibility
 
 **Yes.** Hindsight exposes a built-in MCP endpoint per memory bank. Manus can use it as a custom MCP connection, so `recall`, `retain`, and other Hindsight tools become available during a Manus task. This adds a memory tool, not automatic hidden memory: Manus must be instructed to recall before relevant work and retain only approved summaries after it.
