@@ -15,15 +15,24 @@ This pilot reviews the review process itself. The question is: does this workflo
 - Review angles are assignments for this test, not claims that a model is inherently best at that specialty.
 
 ## Owners and review panel
-- Jack: selects reviewers, sends the prompts, handles any manual transfer, and decides whether another round or implementation is needed.
-- Lead agent: owns the initial document, child pages, ready-to-send prompts, feedback synthesis and version history. Cody is the lead for this pilot.
-- Grok: challenge assumptions, business value and whether the process is worth the effort. Actual model version to be recorded by the reviewer if visible.
-- Ruby: assess operational feasibility, handoffs, permissions and whether an agent can execute the instructions without guessing. Actual model to be verified; do not assume Claude or another family.
-- Z3: ChatGPT web UI using GPT 5.6 Sol, as selected by Jack. Check evidence quality, fair comparisons, reviewer independence and the lead agent's acceptance/rejection rules.
-- Terry using DeepSeek V4 Pro: test the logic, edge cases and failure handling.
-- Terry using Kimi 2.6: assess clarity, missing context, document structure and opportunities to simplify.
-- Terry's two assignments must use separate fresh chats. Finish and save each review independently; do not carry the first review into the second.
-- Gemini is not part of this pilot roster. A future reviewer without Notion access can use the manual transfer procedure below.
+- Jack selects reviewers, sends prompts, handles manual transfers and decides whether to repeat or implement.
+- The lead agent owns the draft, prompts, synthesis and version history. Cody leads this pilot.
+- Grok uses Jack's selected model; Ruby uses her current configured model. Record the actual model if verifiable; otherwise state Unknown.
+- Z3 uses GPT 5.6 Sol in ChatGPT web UI, as selected by Jack.
+- Terry runs DeepSeek V4 Pro; Harry runs Kimi 2.6. Each uses a fresh chat and submits independently without seeing the other's feedback.
+## Three shared review angles
+Each angle has two reviewers answering the same questions independently. This overlap is deliberate: Cody compares their findings on the same subject. Everyone also reviews the whole proposal and may flag material issues outside their assigned angle.
+### Business value and assumptions
+Reviewers: Grok and Z3.
+Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
+### Practical execution and clarity
+Reviewers: Ruby and Harry using Kimi 2.6.
+Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
+### Logic, evidence and failure cases
+Reviewers: Terry using DeepSeek V4 Pro and Z3.
+Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
+Z3 covers two angles in separate sections because this pilot has five reviewers and six angle assignments. This is still five independent reviewers, not six. Do not count Z3's two sections as separate independent votes.
+For future issues, choose suitable angles and assign at least two reviewers per angle. Give each pair identical questions, source material, version and output requirements. Separate pages keep the submissions independent; the questions intentionally overlap.
 
 ## Prepare the main document
 - For a new issue or idea, the lead agent creates a new page/row in [Jack-Work](https://app.notion.com/p/3bea3e33d58180989d15ec73375f412e). If Jack supplies an existing row for the work, use that row.
@@ -39,7 +48,7 @@ This pilot reviews the review process itself. The question is: does this workflo
 - The lead agent checks all links and leaves review version A unchanged while reviews are underway.
 - Jack opens a fresh conversation for each reviewer, selects the requested model where applicable, and sends the matching complete prompt from the prompts page.
 - Each reviewer reads the same main document and supporting evidence. It must not read other feedback pages before saving its own review.
-- All reviewers check the problem, evidence, recommendation, practicality and material omissions. Each also gives extra attention to its assigned angle.
+- All reviewers check the whole proposal. Answer the shared questions for each assigned angle under its exact heading so the paired reviews can be compared directly.
 - Record agent/platform, actual model where verifiable, how the model was identified, document version, review date and sources that could not be accessed. If identity is not exposed, say Unknown rather than guess.
 - A specified-model assignment is blocked if the selected model does not match. Jack corrects the selection before that review proceeds.
 - Reviewers write only to their assigned feedback page, preserve prior rounds, then read back their saved review and return its exact link.
@@ -57,7 +66,7 @@ This pilot reviews the review process itself. The question is: does this workflo
 
 ## Synthesize and revise
 - Once Jack says the round is ready, the lead agent reads all submitted reviews. List completed, missing, blocked and partial reviews rather than assuming every page contains a completed review.
-- Group overlapping findings and retain useful minority objections.
+- Compare the two reviews for each angle side by side first: record agreement, disagreement, findings unique to either reviewer, evidence strength and unresolved tests. Then group findings across angles and retain useful minority objections. If one review is missing, mark that angle as only partly covered.
 - For each material recommendation, record the reviewer and finding, Accepted / Rejected / Needs testing, a brief reason, and the resulting edit or test.
 - Resolve disagreements with evidence or a practical test. Do not count votes or automatically accept criticism.
 - Preserve version A before editing: save a versioned GitHub Markdown snapshot for technical content, or a clearly labeled archived draft for other content. Keep reviewer pages and earlier feedback intact.
@@ -109,7 +118,8 @@ Prompts: https://app.notion.com/p/3e5a3e33d58181a7b638f3048b297188
 
 Date: 2026-09-24 (Mountain Time) | Agent: Cody | Status: Ready for manual dispatch — review version A
 ## Jack's dispatch instructions
-Send each complete prompt below to the named reviewer in a fresh conversation. For Terry, select DeepSeek V4 Pro for one fresh chat and Kimi 2.6 for a different fresh chat. Do not paste the first model's review into the second chat. No reviewers have been contacted by this setup.
+Send each complete prompt below to the named reviewer in a fresh conversation. Select DeepSeek V4 Pro for Terry and Kimi 2.6 for Harry, each in a fresh chat. Do not share either review with the other before submission. No reviewers have been contacted by this setup.
+Pairing: Business value and assumptions — Grok + Z3. Practical execution and clarity — Ruby + Kimi 2.6. Logic, evidence and failure cases — DeepSeek V4 Pro + Z3. Z3 writes two separate angle sections; it remains one reviewer. Paired reviewers receive identical angle questions and do not see each other's feedback before submitting.
 The review is of the workflow itself, not a request to run or automate the workflow. If a reviewer cannot access Notion, supply the complete frozen version A text and supporting material, then transfer its feedback verbatim into its assigned page.
 
 ## Prompt for Grok
@@ -124,7 +134,8 @@ https://app.notion.com/p/3e5a3e33d5818125b05ec9853102a31f
 
 Model: Use the model Jack selected; record its exact name if exposed. Otherwise report Unknown.
 
-Your special focus: Challenge the business value and weak assumptions. Where could this review process waste Jack's time, encourage groupthink or delay a useful test? Identify a simpler alternative if one achieves the same result.
+Shared review angle(s)—answer these exact questions under their matching headings:
+Business value and assumptions: Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
 
 Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
 
@@ -145,7 +156,8 @@ https://app.notion.com/p/3e5a3e33d58181ce9c1fec7028b9c02a
 
 Model: Use your current configured model; verify and record its name if runtime information exposes it. Do not assume a model family.
 
-Your special focus: Check operational feasibility. Can a human and agents follow the handoffs, access checks, destinations, version rules and completion conditions without guessing? Identify concrete missing steps and unnecessary administration.
+Shared review angle(s)—answer these exact questions under their matching headings:
+Practical execution and clarity: Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
 
 Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
 
@@ -166,7 +178,10 @@ https://app.notion.com/p/3e5a3e33d58181358abedcb7567f3f81
 
 Model: Jack selected GPT 5.6 Sol in the ChatGPT web UI. Record it as user-selected unless you have independent runtime evidence. If the visible selection differs, stop and tell Jack.
 
-Your special focus: Check evidence quality and fairness. Could shared context, unequal source access, model overlap, assigned angles or the lead author's bias distort the results? Improve the acceptance/rejection rules without building a complicated scoring system.
+Shared review angle(s)—answer these exact questions under their matching headings:
+Business value and assumptions: Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
+
+Logic, evidence and failure cases: Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
 
 Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
 
@@ -187,7 +202,8 @@ https://app.notion.com/p/3e5a3e33d5818138a34ad9ee7128bd4a
 
 Model: Jack must select DeepSeek V4 Pro in Terry's dropdown in a fresh chat before this review. Verify the active model through available runtime status, or clearly record a user-confirmed selection and the verification limit. If the selection is different or unknown, stop and ask Jack to confirm it; do not silently substitute.
 
-Your special focus: Check the logic and failure cases. Follow the process from draft to reviews to synthesis. Look for contradictory rules, missing decision points, inaccessible links, partial reviews, accidental version changes and model-selection errors. Propose small tests for the most important weaknesses.
+Shared review angle(s)—answer these exact questions under their matching headings:
+Logic, evidence and failure cases: Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
 
 Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
 
@@ -196,9 +212,9 @@ Append “Round A review” with your agent/platform, requested and actual model
 If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
 ```
 
-## Prompt for Terry using Kimi 2.6
+## Prompt for Harry using Kimi 2.6
 ```text
-Terry using Kimi 2.6: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Harry using Kimi 2.6: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
 
 Read the main document and relevant supporting sources:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
@@ -206,9 +222,10 @@ https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 Write your feedback only in your assigned page:
 https://app.notion.com/p/3e5a3e33d5818165b64bc949bb3eb1f1
 
-Model: Jack must select Kimi 2.6 in Terry's dropdown in a separate fresh chat before this review. Use Kimi 2.6, not Kimi K3. Verify the active model through available runtime status, or clearly record a user-confirmed selection and the verification limit. If the selection is different or unknown, stop and ask Jack to confirm it; do not silently substitute. Do not carry Terry's DeepSeek review into this chat.
+Model: Jack must select Kimi 2.6 in Harry's dropdown in a fresh chat before this review. Use Kimi 2.6, not Kimi K3. Verify the active model through available runtime status, or clearly record a user-confirmed selection and the verification limit. If the selection is different or unknown, stop and ask Jack to confirm it; do not silently substitute. Do not read or copy Terry's DeepSeek review before submitting Harry's independent review.
 
-Your special focus: Check clarity, completeness and simplicity. Could Jack or a new agent use this SOP without this conversation? Identify unclear wording, missing context and duplicated instructions. Suggest the smallest edits that make it easier to use while retaining independent reviews and traceable decisions.
+Shared review angle(s)—answer these exact questions under their matching headings:
+Practical execution and clarity: Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
 
 Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
 
