@@ -1,27 +1,25 @@
 # AI Agent Issue and Idea Comparison — Manual Review SOP
 
-Date: 2026-09-24 (Mountain Time) | Agent: Cody | Status: In progress — manual pilot, review version A
+Date: 2026-09-24 (Mountain Time) | Agent: Cody | Status: Version B — awaiting second review
 
-## Overview
-Use independent AI reviews to improve an issue diagnosis, idea, plan or SOP before deciding what to do. One lead agent prepares the initial content, selected reviewers assess the same draft from different angles, and the lead agent weighs the evidence and revises it. Jack decides whether to accept the result, request another round or authorize implementation.
+## Jack does only this
+- Open the Review B prompts page, choose the named reviewer and forward its complete prompt.
+- Select DeepSeek V4 Pro for Terry and Kimi 2.6 for Harry; Z3 uses your selected GPT 5.6 Sol.
+- Receive each review link or access-failure report. Cody prepares the pages, source packet, prompts and synthesis.
+- When you return to Cody with “summarize Review B,” Cody audits every page and reports any missing coverage.
+- Review Cody's recommendation and the independent synthesis checks, then decide whether to accept, test or request a focused follow-up.
 
-This pilot reviews the review process itself. The question is: does this workflow produce clearer, better-supported decisions without adding unnecessary work for Jack?
+## Overview and use rule
+Use independent AI reviews to improve an issue diagnosis, idea, plan or SOP. One lead prepares the draft; paired reviewers answer the same questions independently; the lead compares their evidence and proposes revisions. Jack decides what to accept or implement.
 
-## Purpose and scope
-- Use for issues or ideas where another perspective could materially improve the decision.
-- Produce one clear main document, separate reviewer findings, a decision record and a practical next step.
-- This is a manual pilot. Jack sends prompts and selects Terry's models. No automatic dispatch, Asana setup, new subscriptions, runtime changes or live implementation is included.
-- Different model families may uncover different problems, but agreement is not proof. Agent names do not establish model diversity.
-- Review angles are assignments for this test, not claims that a model is inherently best at that specialty.
+Use this process when Jack asks for a comparison, or when meaningful downside, difficult reversal, conflicting evidence or an important reusable decision justifies review. For routine reversible work, recommend a small practical test rather than automatically assembling a panel. Do not override a review Jack has explicitly requested.
 
-## Owners and review panel
-- Jack selects reviewers, sends prompts, handles manual transfers and decides whether to repeat or implement.
-- The lead agent owns the draft, prompts, synthesis and version history. Cody leads this pilot.
-- Grok uses Jack's selected model; Ruby uses her current configured model. Record the actual model if verifiable; otherwise state Unknown.
-- Z3 uses GPT 5.6 Sol in ChatGPT web UI, as selected by Jack.
-- Terry runs DeepSeek V4 Pro; Harry runs Kimi 2.6. Each uses a fresh chat and submits independently without seeing the other's feedback.
-## Three shared review angles
-Each angle has two reviewers answering the same questions independently. This overlap is deliberate: Cody compares their findings on the same subject. Everyone also reviews the whole proposal and may flag material issues outside their assigned angle.
+This is a manual pilot about the review process itself. It can uncover document and handoff defects; it cannot alone prove an optimal panel size or business return. Automatic dispatch, new subscriptions, Asana setup, credential repair and runtime changes require their own authorized work.
+
+## Owners and paired angles
+The lead agent owns the main page, child pages, complete prompts, source freeze, receipt checks, decision record and revised draft. Cody leads this pilot. Jack selects and dispatches reviewers and makes the final decision.
+
+Keep the same three paired angles for Review B. Everyone also checks the whole proposal and may flag material issues outside the assigned angle.
 ### Business value and assumptions
 Reviewers: Grok and Z3.
 Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
@@ -31,205 +29,286 @@ Can Jack and the agents follow the steps without guessing? Are inputs, permissio
 ### Logic, evidence and failure cases
 Reviewers: Terry using DeepSeek V4 Pro and Z3.
 Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
-Z3 covers two angles in separate sections because this pilot has five reviewers and six angle assignments. This is still five independent reviewers, not six. Do not count Z3's two sections as separate independent votes.
-For future issues, choose suitable angles and assign at least two reviewers per angle. Give each pair identical questions, source material, version and output requirements. Separate pages keep the submissions independent; the questions intentionally overlap.
 
-## Prepare the main document
-- For a new issue or idea, the lead agent creates a new page/row in [Jack-Work](https://app.notion.com/p/3bea3e33d58180989d15ec73375f412e). If Jack supplies an existing row for the work, use that row.
-- Fetch the live database schema before writing properties. Record a meaningful title, actual status and short next-action note. Do not invent ratings or change the database schema.
-- State the actual problem or opportunity, desired outcome, relevant evidence and exact source links, constraints, known facts, assumptions, open questions and recommended approach.
-- For a diagnosis, distinguish observed symptoms from possible causes and name the test needed to confirm a cause.
-- For an SOP, specify who acts, when, inputs, steps, output location, exceptions and observable completion evidence.
-- Label the review version and date. Finish the initial content before preparing the feedback pages.
-- Create actual child pages for each reviewer at the top of the main page. Place an H2 Review and feedback heading above them, then an H2 Reviewer prompts heading and the prompts child-page link. Keep the overview below this navigation.
-- The prompts page contains one complete prompt per reviewer with the exact main-page URL and exact assigned feedback-page URL.
+Z3 writes two separate angle sections and counts as one reviewer. Paired coverage is intentional for this pilot; a reduced panel is an option to test later, not an adopted replacement. Different agents or model families do not guarantee independent evidence. Grok and Ruby reported Grok-family models in Round A; disclose overlap.
 
-## Run the independent review round
-- The lead agent checks all links and leaves review version A unchanged while reviews are underway.
-- Jack opens a fresh conversation for each reviewer, selects the requested model where applicable, and sends the matching complete prompt from the prompts page.
-- Each reviewer reads the same main document and supporting evidence. It must not read other feedback pages before saving its own review.
-- All reviewers check the whole proposal. Answer the shared questions for each assigned angle under its exact heading so the paired reviews can be compared directly.
-- Record agent/platform, actual model where verifiable, how the model was identified, document version, review date and sources that could not be accessed. If identity is not exposed, say Unknown rather than guess.
-- A specified-model assignment is blocked if the selected model does not match. Jack corrects the selection before that review proceeds.
-- Reviewers write only to their assigned feedback page, preserve prior rounds, then read back their saved review and return its exact link.
-- If access fails, report the precise missing access. Do not pretend to have read or updated Notion, and do not change permissions to bypass the failure.
+## Prepare the issue and review packet
+- The lead creates a new row in [Jack-Work](https://app.notion.com/p/3bea3e33d58180989d15ec73375f412e), or uses the exact existing row Jack supplies. Fetch its current schema before setting properties; do not invent ratings or modify the schema.
+- State the problem, desired result, facts and exact evidence links, assumptions, constraints, provisional recommendation and unresolved questions. For diagnoses, separate symptoms from possible causes and name the confirming test. For SOPs, include owner, inputs, actions, output, exceptions and observable completion.
+- Before dispatch, state what would count as a useful outcome and the review return point. Record the lead's initial recommendation so later changes are visible.
+- Finish the draft, give it a dated version, and preserve the source in GitHub at an exact commit. For nontechnical material without GitHub, use a clearly labeled read-only snapshot.
+- Put current-round feedback child pages at the top under an H2 heading. Order this panel: Grok, Ruby, Z3, Terry/DeepSeek, Harry/Kimi. Use titles ending Review-B for this round. Put the H2 Reviewer prompts and its child-page link immediately below. Keep prior-round pages grouped below the current navigation.
+- Prepare one complete prompt per reviewer with the exact main URL, fixed source links, assigned output URL, version, model instructions, shared angle questions, scope and return point. A reviewer must not have to reconstruct a prompt from scattered instructions.
+- Before forwarding sources, use approved reviewers/platforms and remove secrets and unnecessary client/personal data. Mark sources that must stay in their authorized system.
 
-## Feedback format
-- Review record: reviewer, platform, requested/actual model, verification basis, version, date, access gaps and completion status.
-- Verdict: Ready for manual pilot / Ready with changes / Needs rework, with a short reason.
-- What works: retain the useful parts of the draft.
-- Material findings: identify the exact heading or passage; explain the issue, consequence, evidence or uncertainty, and proposed correction or test.
-- Importance: Must fix before use / Improve during pilot / Optional.
-- Assigned review angle: add any distinct observations not already covered.
-- Simplest next step: what should change or be tested first?
-- Do not invent criticisms to meet a quota. No material issue found is an acceptable result. Distinguish facts from opinions and untested hypotheses.
+## Access and model checks
+- Each reviewer confirms it can read the required packet and access its assigned feedback page. Use an existing approved connector or CLI route; the first successful saved/read-back review verifies writing. Do not claim that another agent's access proves your own.
+- If access fails, report the precise failure and the affected source/page. Use the manual-transfer path below if needed. Do not silently change credentials, bypass access controls or assume a local fault affects the fleet.
+- OpenClaw reviewers record active provider/model from session_status where available. Hermes reviewers record runtime model/provider status. Web reviewers record the visible or user-selected model; identity stated in chat or a screenshot is not independent proof of backend routing.
+- Record requested model, actual/reported model, verification basis and observed fallback. Unknown runtime identity remains Unknown; a clearly disclosed user selection is acceptable where the platform exposes no independent identifier. A confirmed mismatch blocks that specified-model review until Jack corrects it.
+- Terry uses DeepSeek V4 Pro; Harry uses Kimi 2.6. Do not silently substitute models. Existing provider access and cost limits still apply.
 
-## Synthesize and revise
-- Once Jack says the round is ready, the lead agent reads all submitted reviews. List completed, missing, blocked and partial reviews rather than assuming every page contains a completed review.
-- Compare the two reviews for each angle side by side first: record agreement, disagreement, findings unique to either reviewer, evidence strength and unresolved tests. Then group findings across angles and retain useful minority objections. If one review is missing, mark that angle as only partly covered.
-- For each material recommendation, record the reviewer and finding, Accepted / Rejected / Needs testing, a brief reason, and the resulting edit or test.
-- Resolve disagreements with evidence or a practical test. Do not count votes or automatically accept criticism.
-- Preserve version A before editing: save a versioned GitHub Markdown snapshot for technical content, or a clearly labeled archived draft for other content. Keep reviewer pages and earlier feedback intact.
-- Publish the revised main content as version B, with a concise change log and unresolved questions. Update the matching GitHub SOP/prompt source when it changes.
-- Review author bias explicitly: explain rejected material findings so Jack can inspect the reasoning.
-- Leave Jack with one recommendation, the next action, its owner and what result would establish success.
+## Review independently
+- Each reviewer uses a fresh conversation and the same fixed required sources as its counterpart.
+- Round A feedback is preserved. Review B may use the shared Round A Summary to check the revisions; this is an informed second review, not a blind repeat of A.
+- Do not read another Round B submission before saving your own. Declare any prior exposure to Round B feedback; do not claim independence if exposed.
+- Keep the reviewed draft and packet unchanged during the round. If a material correction is unavoidable, issue a new version and tell all reviewers which earlier sections require rechecking.
+- Write only in the assigned current-round page. Give a short verdict, what works, exact section/passage for each material issue, consequence, evidence or uncertainty, proposed correction/test and importance: Must fix / Improve during pilot / Optional.
+- For consequential external factual claims, cite a verifiable source or state Unsupported. Cite the draft heading for observations about the document. Separate observed failures from assumptions about causes or other agents.
+- Do not invent criticism to fill a quota. For Review B, mark material Round A findings Resolved / Partly resolved / Unresolved and report any new regression.
+- After saving, mark the review Submitted, read it back and return its exact URL. Keep the page-preparer and reviewer identities distinct.
 
-## Repeat or finish
-- Jack chooses whether another round is worthwhile.
-- Later-round prompts name the new version, changed sections and unresolved questions. Reviewers may compare earlier feedback after their independent first review is saved.
-- Append a new round section to each feedback page; do not overwrite earlier reviews.
-- Stop when material concerns are resolved or assigned to a bounded test and Jack has enough evidence to decide. Unanimity and cosmetic agreement are not required.
-- Review completion does not authorize implementation. Follow Jack's applicable Diagnose or Get-er-Done scope for the next action.
+## Return point and missing reviews
+The return point for this manual Review B is Jack's next request to Cody to summarize it. Reviewers return their link or access failure in the same conversation as the prompt. No background monitoring or fixed 24-hour timer is configured.
 
-## Manual transfer when a reviewer cannot access Notion
-- The lead agent prepares the complete frozen review text and relevant supporting material for Jack, with the same version label and sources. A bare private Notion link is insufficient.
-- Jack supplies that packet and the assigned prompt to the reviewer.
-- Jack or the lead agent copies the returned feedback verbatim into the assigned feedback page, identifies the original reviewer and model, labels who transferred it, and checks that nothing was omitted.
-- Mark unviewed sources and distinguish this copied review from a direct Notion submission. Do not rewrite feedback during transfer.
+At that return point, Cody audits all five pages. Full paired coverage requires all five submissions, including both Z3 sections. Cody may provide a provisional summary with missing/blocked coverage labeled; it is not a completed paired round. Jack decides whether to wait, retry, replace or explicitly omit a reviewer. Do not silently swap models or drop a pair.
 
-## Pilot acceptance and failure handling
-- Setup is ready when the main page is in Jack-Work, five feedback child pages appear at its top, and the prompts child page sits immediately below them under an H2 heading.
-- Every prompt contains the correct source/destination links, version, assigned angle, output requirements and review-only scope.
-- The pilot succeeds when each completed review is saved in the correct page, model identity and access limitations are recorded, and Cody produces a reasoned synthesis and improved document for Jack.
-- Record Jack's handling time, unique useful findings, material errors corrected, access problems and actual cost if available. Unknown costs remain unknown; estimates are not bills.
-- If a reviewer fails, preserve completed work, record the failure and let Jack retry, replace or omit that reviewer explicitly. Do not silently change models.
-- Do not repeat the same failed action more than three times. Fetch the target before retrying an uncertain Notion write to avoid duplicates.
-- Recovery: return to the preserved prior draft and retain the reviews and change history.
+For a future round, state a specific deadline or event-based return point in every prompt. A missing reviewer must not prevent reporting available findings. Stop repeated identical failed actions after three attempts, and fetch before retrying an uncertain write.
 
-## Current pilot status
-Review version A is the initial proposal. Feedback is pending; the workflow has not yet been validated by this pilot.
-Next action: Jack sends the five prepared prompts. Cody synthesizes the submitted feedback when Jack asks.
+## Synthesize, check and revise
+- Compare each pair first: agreements, disagreements, unique findings, evidence strength and tests needed. Then consolidate across angles. Never count Z3 twice or treat agreement as proof.
+- Save the round's synthesis in a named Summary child page linked from the main page. Include a decision record: source reviewer/finding, Accepted / Rejected / Needs testing, reason, resulting edit or test and owner.
+- Preserve supported minority objections. If a material dispute remains after checking the evidence, show both positions and propose a bounded test or Jack's decision. Do not manufacture consensus.
+- Have Jack or a designated independent reviewer inspect at least one accepted and one rejected material finding. A reviewer may disagree with Cody's disposition; record that disagreement. A failed check triggers correction and escalation to Jack, not automatic acceptance.
+- Preserve the previous draft at its commit before editing. Publish a new version, change log and exact source link. Keep all previous feedback and summaries. This pilot uses new feedback child pages for each round.
+- Review completion does not itself authorize live implementation. Follow Jack's separate Diagnose or Get-er-Done scope.
 
-## Source of truth
-This Notion page is the operating and review workspace. GitHub holds the versioned SOP/prompt source and technical tracking. Jack's instructions in the setup conversation define this pilot's scope and reviewer roster. Model capability, price and connector-access claims must be verified separately before relying on them; this SOP does not depend on a price table.
+## Manual transfer
+If a reviewer cannot use Notion, the lead prepares the complete fixed source text and relevant evidence for Jack to forward. A private URL alone is insufficient. The reviewer discloses inaccessible sources and returns a complete review in chat.
 
-## Pilot links
+Jack or the lead copies that feedback verbatim to the assigned page, records the reviewer/model, transfer author and source version, and checks completeness. Do not rewrite the opinion during transfer. If a required source is unavailable, label the review Partial until an equivalent packet is supplied.
 
-Main page: https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
-Prompts: https://app.notion.com/p/3e5a3e33d58181a7b638f3048b297188
+## Completion versus useful outcome
+A round is procedurally complete when its required reviews are saved/read back, coverage and identities are disclosed, the synthesis and independent check are recorded, and Jack receives a next action.
 
-- [Grok-feedback](https://app.notion.com/p/3e5a3e33d5818125b05ec9853102a31f)
-- [Ruby-feedback](https://app.notion.com/p/3e5a3e33d58181ce9c1fec7028b9c02a)
-- [Z3-feedback](https://app.notion.com/p/3e5a3e33d58181358abedcb7567f3f81)
-- [DeepSeek-V4-Pro-feedback](https://app.notion.com/p/3e5a3e33d5818138a34ad9ee7128bd4a)
-- [Kimi-2.6-feedback](https://app.notion.com/p/3e5a3e33d5818165b64bc949bb3eb1f1)
+Value is a separate assessment: did the process catch a material error, change a decision or produce a useful risk-reducing test, and was that worth Jack's handling burden? Record approximate active handling time, unique useful findings, changes adopted and actual cost if available. Unknowns stay unknown; elapsed time is not active work time.
 
-## Ready-to-send pilot prompts
+For this Review B, Cody's starting recommendation is to retain paired manual reviews and the targeted corrections. Success means the paired reviewers can identify whether those corrections work, any material unresolved issues have an owner/test/decision, and the synthesis spot-check is reported. This does not establish business ROI. No historical timing baseline or 20/30-minute threshold is invented.
 
-Date: 2026-09-24 (Mountain Time) | Agent: Cody | Status: Ready for manual dispatch — review version A
-## Jack's dispatch instructions
-Send each complete prompt below to the named reviewer in a fresh conversation. Select DeepSeek V4 Pro for Terry and Kimi 2.6 for Harry, each in a fresh chat. Do not share either review with the other before submission. No reviewers have been contacted by this setup.
-Pairing: Business value and assumptions — Grok + Z3. Practical execution and clarity — Ruby + Kimi 2.6. Logic, evidence and failure cases — DeepSeek V4 Pro + Z3. Z3 writes two separate angle sections; it remains one reviewer. Paired reviewers receive identical angle questions and do not see each other's feedback before submitting.
-The review is of the workflow itself, not a request to run or automate the workflow. If a reviewer cannot access Notion, supply the complete frozen version A text and supporting material, then transfer its feedback verbatim into its assigned page.
+Stop after this round unless Jack identifies an unresolved question worth another review or test. A smaller panel and automated dispatch remain separate options, not assumed improvements.
+
+## Decision record and changes from A
+The [Review A Summary](https://app.notion.com/p/3e5a3e33d581803ba510d17aa1c28957) preserves findings, dispositions and reasons. Version B implements the accepted documentation changes:
+- Grok/Z3: added a use rule, explicit starting recommendation, distinction between completion and value, and a focused stopping rule. Kept Jack's requested paired design.
+- Ruby: clarified Jack versus lead duties, pinned the required sources, named the decision-record destination, and corrected Terry/Harry identity and current page labels.
+- Terry/Z3: added an independent synthesis check, factual-source standard and an unresolved-disagreement outcome.
+- Harry: added a brief access check, platform-appropriate model disclosure and an explicit return point. His reported authentication issue is for separate diagnosis, not evidence of a shared outage.
+- Not adopted: automatic dispatch, untested timing/savings thresholds, shrinking the panel by default, or using a newly invented objection as a pass/fail test.
+
+Review B includes an independent check of one accepted disposition (fixed source packet) and one rejected disposition (automatic dispatch in this manual pilot). This check has not yet been performed.
+
+## Current status and ownership
+Round A: all five reviews and summary received. Version B: prepared for Jack's requested second review; submissions pending.
+Jack sends the B prompts. Cody audits and synthesizes B when Jack returns. The Review B decision record will be saved in a Review-B-Summary child page when the reviews are assessed; it is not fabricated in advance.
+Notion is the operating workspace; GitHub holds the versioned SOP, prompt source and technical history. Restore a prior source commit if needed while retaining the review history.
+
+## Fixed source packet for Review B
+Required for every reviewer:
+- [Version B frozen SOP](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md) — controls the reviewed wording. Read the complete snapshot.
+- [Complete Round A Summary, frozen](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md) — controls the prior findings and dispositions used in this second review.
+- [Version A frozen SOP and prompts](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md) — consult the passages relevant to checking corrections; it is prior-version evidence, not the active procedure.
+The live main page is the working mirror and navigation. Compare its SOP with the B snapshot; report a mismatch instead of silently mixing versions. The prompt includes all three exact source URLs. The journal and live GitHub issue are optional operational background, not extra required evidence.
+If a required source cannot be read, request its complete text through Jack and label any interim review Partial. Other Round B feedback pages stay closed until your own submission is saved.
+
+## Review B destinations
+- [Grok-feedback-Review-B](https://app.notion.com/p/3e5a3e33d58181f4b39dca4b2c7dfdaf)
+- [Ruby-feedback-Review-B](https://app.notion.com/p/3e5a3e33d58181609b03faedb1638e7e)
+- [Z3-feedback-Review-B](https://app.notion.com/p/3e5a3e33d58181c4bbe2df7a7d3ccb8e)
+- [Terry-DeepSeek-V4-Pro-feedback-Review-B](https://app.notion.com/p/3e5a3e33d58181b3bdd8d8ee9fd2b7cc)
+- [Harry-Kimi-2.6-feedback-Review-B](https://app.notion.com/p/3e5a3e33d58181deba3ec827edb8cd13)
+
+## Review B prompts
+Date: 2026-09-24 (Mountain Time) | Agent: Cody | Status: Review B prompts ready for manual dispatch
+## Jack's instructions
+Forward the complete matching prompt below in a fresh chat. Terry uses DeepSeek V4 Pro; Harry uses Kimi 2.6. Z3 uses GPT 5.6 Sol. Same pairs: Grok + Z3 for business value; Ruby + Harry for execution; Terry + Z3 for logic. Z3 writes two sections and remains one reviewer.
+This round checks version B's fixes and remaining material concerns. The return point is your next request to Cody to summarize Review B. There is no automatic timer or dispatch. Reviewers return a saved feedback URL or an access-failure report to you.
+## Fixed source packet for Review B
+Required for every reviewer:
+- [Version B frozen SOP](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md) — controls the reviewed wording. Read the complete snapshot.
+- [Complete Round A Summary, frozen](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md) — controls the prior findings and dispositions used in this second review.
+- [Version A frozen SOP and prompts](https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md) — consult the passages relevant to checking corrections; it is prior-version evidence, not the active procedure.
+The live main page is the working mirror and navigation. Compare its SOP with the B snapshot; report a mismatch instead of silently mixing versions. The prompt includes all three exact source URLs. The journal and live GitHub issue are optional operational background, not extra required evidence.
+If a required source cannot be read, request its complete text through Jack and label any interim review Partial. Other Round B feedback pages stay closed until your own submission is saved.
 
 ## Prompt for Grok
 ```text
-Grok: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Grok: review version B of Cody's AI issue/idea comparison SOP. This is a second review of the revisions, not a request to run or automate the process.
 
-Read the main document and relevant supporting sources:
+Main working page:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 
-Write your feedback only in your assigned page:
-https://app.notion.com/p/3e5a3e33d5818125b05ec9853102a31f
+Write only to your NEW Review B feedback page:
+https://app.notion.com/p/3e5a3e33d58181f4b39dca4b2c7dfdaf
 
-Model: Use the model Jack selected; record its exact name if exposed. Otherwise report Unknown.
+Required fixed sources:
+Version B — read completely:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md
+Round A Summary — read completely, including disputed findings:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md
+Version A — check relevant original passages:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md
 
-Shared review angle(s)—answer these exact questions under their matching headings:
-Business value and assumptions: Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
+Model instruction: Use Jack's selected Grok model and record the exact visible identity and its verification basis.
+If a requested model demonstrably differs, tell Jack before proceeding. If exact identity is not exposed, state the user-selected model and verification limit; do not invent runtime proof.
 
-Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
+Answer these shared angle questions under their matching headings:
+Business value and assumptions
+Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
 
-Append “Round A review” with your agent/platform, requested and actual model, verification basis, date, version and access gaps. Give a brief verdict (Ready for manual pilot / Ready with changes / Needs rework), what works, and material findings. For each finding name the exact section, issue, consequence, evidence or uncertainty, proposed correction/test and importance (Must fix / Improve during pilot / Optional). Finish with the simplest next step. Do not invent criticisms or repeat points to fill space.
+Check the whole proposal too. Mark relevant Round A issues Resolved / Partly resolved / Unresolved, citing the exact B section. Identify any new material regression. Do not repeat resolved criticism without explaining what remains wrong. Distinguish observed access failures from unverified causes or fleet-wide claims.
 
-If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
+Independently spot-check Cody's acceptance of a fixed source packet and rejection of automated dispatch for this manual pilot. Is each disposition supported by the source and Jack's stated scope? Disagree explicitly if warranted. Do not approve merely because Cody says it is resolved.
+
+Use the same required evidence as your counterpart. You may read the shared A Summary, but do not read other Review B submissions before saving yours. Declare any earlier exposure to B feedback. If a required source cannot be read, ask Jack for its complete text and mark the interim review Partial; do not claim full coverage.
+
+Append an H2 Round B review: agent/platform, requested and reported model, verification basis, date/version, sources/access gaps, independence disclosure, verdict (Ready for practical use / Ready with changes / Needs rework), angle findings, synthesis spot-check and simplest next step. Each material finding needs section, consequence, evidence/uncertainty, correction/test and importance. Link support for consequential external factual claims. No criticism quota.
+
+Preserve old content and all A reviews. Change this page's assignment status to Submitted when done, read back your saved review, and return the exact URL. If writing fails, return the complete review to Jack for verbatim transfer. The return point is Jack's next request to Cody to summarize B; return your link or access failure in this conversation. Review only—no main-page edits, dispatch, credential changes or implementation.
 ```
 
 ## Prompt for Ruby
 ```text
-Ruby: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Ruby: review version B of Cody's AI issue/idea comparison SOP. This is a second review of the revisions, not a request to run or automate the process.
 
-Read the main document and relevant supporting sources:
+Main working page:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 
-Write your feedback only in your assigned page:
-https://app.notion.com/p/3e5a3e33d58181ce9c1fec7028b9c02a
+Write only to your NEW Review B feedback page:
+https://app.notion.com/p/3e5a3e33d58181609b03faedb1638e7e
 
-Model: Use your current configured model; verify and record its name if runtime information exposes it. Do not assume a model family.
+Required fixed sources:
+Version B — read completely:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md
+Round A Summary — read completely, including disputed findings:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md
+Version A — check relevant original passages:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md
 
-Shared review angle(s)—answer these exact questions under their matching headings:
-Practical execution and clarity: Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
+Model instruction: Use your configured model and record runtime model/provider information. Round A reported Grok; do not assume a different family.
+If a requested model demonstrably differs, tell Jack before proceeding. If exact identity is not exposed, state the user-selected model and verification limit; do not invent runtime proof.
 
-Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
+Answer these shared angle questions under their matching headings:
+Practical execution and clarity
+Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
 
-Append “Round A review” with your agent/platform, requested and actual model, verification basis, date, version and access gaps. Give a brief verdict (Ready for manual pilot / Ready with changes / Needs rework), what works, and material findings. For each finding name the exact section, issue, consequence, evidence or uncertainty, proposed correction/test and importance (Must fix / Improve during pilot / Optional). Finish with the simplest next step. Do not invent criticisms or repeat points to fill space.
+Check the whole proposal too. Mark relevant Round A issues Resolved / Partly resolved / Unresolved, citing the exact B section. Identify any new material regression. Do not repeat resolved criticism without explaining what remains wrong. Distinguish observed access failures from unverified causes or fleet-wide claims.
 
-If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
+Independently spot-check Cody's acceptance of a fixed source packet and rejection of automated dispatch for this manual pilot. Is each disposition supported by the source and Jack's stated scope? Disagree explicitly if warranted. Do not approve merely because Cody says it is resolved.
+
+Use the same required evidence as your counterpart. You may read the shared A Summary, but do not read other Review B submissions before saving yours. Declare any earlier exposure to B feedback. If a required source cannot be read, ask Jack for its complete text and mark the interim review Partial; do not claim full coverage.
+
+Append an H2 Round B review: agent/platform, requested and reported model, verification basis, date/version, sources/access gaps, independence disclosure, verdict (Ready for practical use / Ready with changes / Needs rework), angle findings, synthesis spot-check and simplest next step. Each material finding needs section, consequence, evidence/uncertainty, correction/test and importance. Link support for consequential external factual claims. No criticism quota.
+
+Preserve old content and all A reviews. Change this page's assignment status to Submitted when done, read back your saved review, and return the exact URL. If writing fails, return the complete review to Jack for verbatim transfer. The return point is Jack's next request to Cody to summarize B; return your link or access failure in this conversation. Review only—no main-page edits, dispatch, credential changes or implementation.
 ```
 
 ## Prompt for Z3
 ```text
-Z3: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Z3: review version B of Cody's AI issue/idea comparison SOP. This is a second review of the revisions, not a request to run or automate the process.
 
-Read the main document and relevant supporting sources:
+Main working page:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 
-Write your feedback only in your assigned page:
-https://app.notion.com/p/3e5a3e33d58181358abedcb7567f3f81
+Write only to your NEW Review B feedback page:
+https://app.notion.com/p/3e5a3e33d58181c4bbe2df7a7d3ccb8e
 
-Model: Jack selected GPT 5.6 Sol in the ChatGPT web UI. Record it as user-selected unless you have independent runtime evidence. If the visible selection differs, stop and tell Jack.
+Required fixed sources:
+Version B — read completely:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md
+Round A Summary — read completely, including disputed findings:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md
+Version A — check relevant original passages:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md
 
-Shared review angle(s)—answer these exact questions under their matching headings:
-Business value and assumptions: Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
+Model instruction: Use Jack-selected GPT 5.6 Sol. Distinguish the visible/user-selected model from independent runtime verification.
+If a requested model demonstrably differs, tell Jack before proceeding. If exact identity is not exposed, state the user-selected model and verification limit; do not invent runtime proof.
 
-Logic, evidence and failure cases: Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
+Answer these shared angle questions under their matching headings:
+Business value and assumptions
+Does this process improve Jack's decisions enough to justify the time and cost? Which assumptions lack evidence? Where could it produce false confidence or delay useful action? What is the simplest worthwhile version?
 
-Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
+Logic, evidence and failure cases
+Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
 
-Append “Round A review” with your agent/platform, requested and actual model, verification basis, date, version and access gaps. Give a brief verdict (Ready for manual pilot / Ready with changes / Needs rework), what works, and material findings. For each finding name the exact section, issue, consequence, evidence or uncertainty, proposed correction/test and importance (Must fix / Improve during pilot / Optional). Finish with the simplest next step. Do not invent criticisms or repeat points to fill space.
+Check the whole proposal too. Mark relevant Round A issues Resolved / Partly resolved / Unresolved, citing the exact B section. Identify any new material regression. Do not repeat resolved criticism without explaining what remains wrong. Distinguish observed access failures from unverified causes or fleet-wide claims.
 
-If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
+Independently spot-check Cody's acceptance of a fixed source packet and rejection of automated dispatch for this manual pilot. Is each disposition supported by the source and Jack's stated scope? Disagree explicitly if warranted. Do not approve merely because Cody says it is resolved.
+
+Use the same required evidence as your counterpart. You may read the shared A Summary, but do not read other Review B submissions before saving yours. Declare any earlier exposure to B feedback. If a required source cannot be read, ask Jack for its complete text and mark the interim review Partial; do not claim full coverage.
+
+Append an H2 Round B review: agent/platform, requested and reported model, verification basis, date/version, sources/access gaps, independence disclosure, verdict (Ready for practical use / Ready with changes / Needs rework), angle findings, synthesis spot-check and simplest next step. Each material finding needs section, consequence, evidence/uncertainty, correction/test and importance. Link support for consequential external factual claims. No criticism quota.
+
+Preserve old content and all A reviews. Change this page's assignment status to Submitted when done, read back your saved review, and return the exact URL. If writing fails, return the complete review to Jack for verbatim transfer. The return point is Jack's next request to Cody to summarize B; return your link or access failure in this conversation. Review only—no main-page edits, dispatch, credential changes or implementation.
 ```
 
 ## Prompt for Terry using DeepSeek V4 Pro
 ```text
-Terry using DeepSeek V4 Pro: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Terry using DeepSeek V4 Pro: review version B of Cody's AI issue/idea comparison SOP. This is a second review of the revisions, not a request to run or automate the process.
 
-Read the main document and relevant supporting sources:
+Main working page:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 
-Write your feedback only in your assigned page:
-https://app.notion.com/p/3e5a3e33d5818138a34ad9ee7128bd4a
+Write only to your NEW Review B feedback page:
+https://app.notion.com/p/3e5a3e33d58181b3bdd8d8ee9fd2b7cc
 
-Model: Jack must select DeepSeek V4 Pro in Terry's dropdown in a fresh chat before this review. Verify the active model through available runtime status, or clearly record a user-confirmed selection and the verification limit. If the selection is different or unknown, stop and ask Jack to confirm it; do not silently substitute.
+Required fixed sources:
+Version B — read completely:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md
+Round A Summary — read completely, including disputed findings:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md
+Version A — check relevant original passages:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md
 
-Shared review angle(s)—answer these exact questions under their matching headings:
-Logic, evidence and failure cases: Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
+Model instruction: Jack selects DeepSeek V4 Pro for Terry. Check session_status and record the active provider/model and any observed fallback; do not silently substitute.
+If a requested model demonstrably differs, tell Jack before proceeding. If exact identity is not exposed, state the user-selected model and verification limit; do not invent runtime proof.
 
-Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
+Answer these shared angle questions under their matching headings:
+Logic, evidence and failure cases
+Do the conclusions follow from the evidence? How could shared context, missing sources, model overlap or author bias distort the result? What happens when a reviewer fails or disagrees? Which small test would resolve the most important uncertainty?
 
-Append “Round A review” with your agent/platform, requested and actual model, verification basis, date, version and access gaps. Give a brief verdict (Ready for manual pilot / Ready with changes / Needs rework), what works, and material findings. For each finding name the exact section, issue, consequence, evidence or uncertainty, proposed correction/test and importance (Must fix / Improve during pilot / Optional). Finish with the simplest next step. Do not invent criticisms or repeat points to fill space.
+Check the whole proposal too. Mark relevant Round A issues Resolved / Partly resolved / Unresolved, citing the exact B section. Identify any new material regression. Do not repeat resolved criticism without explaining what remains wrong. Distinguish observed access failures from unverified causes or fleet-wide claims.
 
-If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
+Independently spot-check Cody's acceptance of a fixed source packet and rejection of automated dispatch for this manual pilot. Is each disposition supported by the source and Jack's stated scope? Disagree explicitly if warranted. Do not approve merely because Cody says it is resolved.
+
+Use the same required evidence as your counterpart. You may read the shared A Summary, but do not read other Review B submissions before saving yours. Declare any earlier exposure to B feedback. If a required source cannot be read, ask Jack for its complete text and mark the interim review Partial; do not claim full coverage.
+
+Append an H2 Round B review: agent/platform, requested and reported model, verification basis, date/version, sources/access gaps, independence disclosure, verdict (Ready for practical use / Ready with changes / Needs rework), angle findings, synthesis spot-check and simplest next step. Each material finding needs section, consequence, evidence/uncertainty, correction/test and importance. Link support for consequential external factual claims. No criticism quota.
+
+Preserve old content and all A reviews. Change this page's assignment status to Submitted when done, read back your saved review, and return the exact URL. If writing fails, return the complete review to Jack for verbatim transfer. The return point is Jack's next request to Cody to summarize B; return your link or access failure in this conversation. Review only—no main-page edits, dispatch, credential changes or implementation.
 ```
 
 ## Prompt for Harry using Kimi 2.6
 ```text
-Harry using Kimi 2.6: independently review Cody's proposed AI issue/idea comparison workflow, review version A. We are testing whether this process improves decisions without adding unnecessary work for Jack.
+Harry using Kimi 2.6: review version B of Cody's AI issue/idea comparison SOP. This is a second review of the revisions, not a request to run or automate the process.
 
-Read the main document and relevant supporting sources:
+Main working page:
 https://app.notion.com/p/3e5a3e33d58180ba9cd5d9523798f83d
 
-Write your feedback only in your assigned page:
-https://app.notion.com/p/3e5a3e33d5818165b64bc949bb3eb1f1
+Write only to your NEW Review B feedback page:
+https://app.notion.com/p/3e5a3e33d58181deba3ec827edb8cd13
 
-Model: Jack must select Kimi 2.6 in Harry's dropdown in a fresh chat before this review. Use Kimi 2.6, not Kimi K3. Verify the active model through available runtime status, or clearly record a user-confirmed selection and the verification limit. If the selection is different or unknown, stop and ask Jack to confirm it; do not silently substitute. Do not read or copy Terry's DeepSeek review before submitting Harry's independent review.
+Required fixed sources:
+Version B — read completely:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/9c7637e8cd60ec2d6f840a22d84d9ee60287c691/tracking/ai-issue-idea-review/2026-09-24-version-b-snapshot.md
+Round A Summary — read completely, including disputed findings:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/e77a55d141112157de0ab3052a8b49fb30d8c278/tracking/ai-issue-idea-review/2026-09-24-review-a-summary.md
+Version A — check relevant original passages:
+https://github.com/ZedBiz44/ZedBiz-general-tech-issues-updates/blob/465effcb61e818a80e912ec97e362835e10381ed/ai-agent-sops/ai-issue-idea-comparison-manual-review.md
 
-Shared review angle(s)—answer these exact questions under their matching headings:
-Practical execution and clarity: Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
+Model instruction: Jack selects Kimi 2.6 for Harry. Check session_status and record the active provider/model and any observed fallback; do not silently substitute.
+If a requested model demonstrably differs, tell Jack before proceeding. If exact identity is not exposed, state the user-selected model and verification limit; do not invent runtime proof.
 
-Also assess the overall problem, evidence, practicality, recommendation and material omissions. Do not read other reviewers' feedback before submitting. Review only: do not edit the main document, dispatch agents or implement changes.
+Answer these shared angle questions under their matching headings:
+Practical execution and clarity
+Can Jack and the agents follow the steps without guessing? Are inputs, permissions, handoffs, page links, version control and completion rules clear? Where is the process too complicated, and what concrete change would make it easier to run?
 
-Append “Round A review” with your agent/platform, requested and actual model, verification basis, date, version and access gaps. Give a brief verdict (Ready for manual pilot / Ready with changes / Needs rework), what works, and material findings. For each finding name the exact section, issue, consequence, evidence or uncertainty, proposed correction/test and importance (Must fix / Improve during pilot / Optional). Finish with the simplest next step. Do not invent criticisms or repeat points to fill space.
+Check the whole proposal too. Mark relevant Round A issues Resolved / Partly resolved / Unresolved, citing the exact B section. Identify any new material regression. Do not repeat resolved criticism without explaining what remains wrong. Distinguish observed access failures from unverified causes or fleet-wide claims.
 
-If source access fails, tell Jack what is missing before reviewing. If writing fails, return your complete review for manual transfer. Otherwise read back your saved feedback and return the exact feedback-page URL. Preserve prior content and reviews.
+Independently spot-check Cody's acceptance of a fixed source packet and rejection of automated dispatch for this manual pilot. Is each disposition supported by the source and Jack's stated scope? Disagree explicitly if warranted. Do not approve merely because Cody says it is resolved.
+
+Use the same required evidence as your counterpart. You may read the shared A Summary, but do not read other Review B submissions before saving yours. Declare any earlier exposure to B feedback. If a required source cannot be read, ask Jack for its complete text and mark the interim review Partial; do not claim full coverage.
+
+Append an H2 Round B review: agent/platform, requested and reported model, verification basis, date/version, sources/access gaps, independence disclosure, verdict (Ready for practical use / Ready with changes / Needs rework), angle findings, synthesis spot-check and simplest next step. Each material finding needs section, consequence, evidence/uncertainty, correction/test and importance. Link support for consequential external factual claims. No criticism quota.
+
+Preserve old content and all A reviews. Change this page's assignment status to Submitted when done, read back your saved review, and return the exact URL. If writing fails, return the complete review to Jack for verbatim transfer. The return point is Jack's next request to Cody to summarize B; return your link or access failure in this conversation. Review only—no main-page edits, dispatch, credential changes or implementation.
 ```
